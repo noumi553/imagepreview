@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="ai.css">
+    <title>Document</title>
+</head>
+<body>
+  
+  <div class="image-preview-container">
+    <h1>Preview an image before uploading using javascript</h1>
+    <div class="preview">
+      <i class="fa-solid fa-file-arrow-up arrow"></i>
+      <img id="preview-selected-image" style="max-width: 300px; border-radius: 1rem;">
+    </div>
+    <label for="file-upload"><i class="fa-solid fa-upload"></i><p>Upload image</p></label>
+    <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
+  </div>
+</body>
+<script>
+const previewImage=(event)=>{
+ const files=event.target.files;
+ if(files){
+  const imageUrl=URL.createObjectURL(files[0]);
+  const imageElement = document.getElementById("preview-selected-image");
+  const removBorder=document.querySelector('.preview');
+  let arrow=document.querySelector(".arrow");
+  arrow.style.display='none';
+  removBorder.style.border='none';
+  imageElement.src=imageUrl;
+ }
+}
+</script>
+</html>
